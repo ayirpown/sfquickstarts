@@ -20,21 +20,7 @@ The system leverages Snowflake's REST API (`/api/v2/cortex/inference:complete`) 
 
 ### Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                     Snowflake Account                           │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐ │
-│  │  Cortex REST    │  │  PAT Lifecycle  │  │  User/Role      │ │
-│  │  API Endpoint   │  │  Management     │  │  Management     │ │
-│  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘ │
-└───────────┼────────────────────┼────────────────────┼──────────┘
-            │                    │                    │
-     ┌──────┴──────┐      ┌──────┴──────┐      ┌──────┴──────┐
-     │  AdminApp   │      │   UserApp   │      │  Flask API  │
-     │  (Port 8521)│      │ (Port 8522) │      │ (Port 8525) │
-     │  Streamlit  │      │  Streamlit  │      │  REST API   │
-     └─────────────┘      └─────────────┘      └─────────────┘
-```
+![REST API Onboarding Architecture](assets/architecture.png)
 
 ### Prerequisites
 - Snowflake account with ACCOUNTADMIN or SECURITYADMIN role
